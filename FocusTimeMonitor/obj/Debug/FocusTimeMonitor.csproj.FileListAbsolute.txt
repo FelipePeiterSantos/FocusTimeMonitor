@@ -1,0 +1,8 @@
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\bin\Debug\FocusTimeMonitor.exe
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\bin\Debug\FocusTimeMonitor.pdb
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\obj\Debug\FocusTimeMonitor.rootForm.resources
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\obj\Debug\FocusTimeMonitor.Properties.Resources.resources
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\obj\Debug\FocusTimeMonitor.csproj.GenerateResource.Cache
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\obj\Debug\FocusTimeMonitor.exe
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\obj\Debug\FocusTimeMonitor.pdb
+C:\Users\Felipe\Desktop\FocusTimeMonitor\FocusTimeMonitor\obj\Debug\FocusTimeMonitor.csprojResolveAssemblyReference.cache

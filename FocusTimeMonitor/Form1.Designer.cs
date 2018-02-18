@@ -32,12 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rootForm));
             this.topMenu = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStartBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.menuResumeBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPauseBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.menuResetBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExitBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOpenBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editRemoveCheckBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.editRemoveUncheckBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +60,7 @@
             this.trayResetBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.trayExitBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOpenBkpFolderBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.trayContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +79,8 @@
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuOpenBtn,
+            this.toolStripMenuItem4,
             this.menuStartBtn,
             this.menuResumeBtn,
             this.menuPauseBtn,
@@ -86,45 +91,58 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            // 
             // menuStartBtn
             // 
             this.menuStartBtn.Name = "menuStartBtn";
-            this.menuStartBtn.Size = new System.Drawing.Size(116, 22);
+            this.menuStartBtn.Size = new System.Drawing.Size(152, 22);
             this.menuStartBtn.Text = "Start";
             this.menuStartBtn.Click += new System.EventHandler(this.menuStartBtn_Click);
             // 
             // menuResumeBtn
             // 
             this.menuResumeBtn.Name = "menuResumeBtn";
-            this.menuResumeBtn.Size = new System.Drawing.Size(116, 22);
+            this.menuResumeBtn.Size = new System.Drawing.Size(152, 22);
             this.menuResumeBtn.Text = "Resume";
             this.menuResumeBtn.Click += new System.EventHandler(this.menuResumeBtn_Click);
             // 
             // menuPauseBtn
             // 
             this.menuPauseBtn.Name = "menuPauseBtn";
-            this.menuPauseBtn.Size = new System.Drawing.Size(116, 22);
+            this.menuPauseBtn.Size = new System.Drawing.Size(152, 22);
             this.menuPauseBtn.Text = "Pause";
             this.menuPauseBtn.Click += new System.EventHandler(this.menuPauseBtn_Click);
             // 
             // menuResetBtn
             // 
             this.menuResetBtn.Name = "menuResetBtn";
-            this.menuResetBtn.Size = new System.Drawing.Size(116, 22);
+            this.menuResetBtn.Size = new System.Drawing.Size(152, 22);
             this.menuResetBtn.Text = "Reset";
             this.menuResetBtn.Click += new System.EventHandler(this.menuResetBtn_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(113, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // menuExitBtn
             // 
             this.menuExitBtn.Name = "menuExitBtn";
-            this.menuExitBtn.Size = new System.Drawing.Size(116, 22);
+            this.menuExitBtn.Size = new System.Drawing.Size(152, 22);
             this.menuExitBtn.Text = "Exit";
             this.menuExitBtn.Click += new System.EventHandler(this.menuExitBtn_Click);
+            // 
+            // menuOpenBtn
+            // 
+            this.menuOpenBtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuOpenBkpFolderBtn});
+            this.menuOpenBtn.Name = "menuOpenBtn";
+            this.menuOpenBtn.Size = new System.Drawing.Size(152, 22);
+            this.menuOpenBtn.Text = "Open";
             // 
             // editToolStripMenuItem
             // 
@@ -292,6 +310,13 @@
             this.trayExitBtn.Text = "Exit";
             this.trayExitBtn.Click += new System.EventHandler(this.menuExitBtn_Click);
             // 
+            // menuOpenBkpFolderBtn
+            // 
+            this.menuOpenBkpFolderBtn.Name = "menuOpenBkpFolderBtn";
+            this.menuOpenBkpFolderBtn.Size = new System.Drawing.Size(152, 22);
+            this.menuOpenBkpFolderBtn.Text = "Backup Folder";
+            this.menuOpenBkpFolderBtn.Click += new System.EventHandler(this.menuOpenBkpFolderBtn_Click);
+            // 
             // rootForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +371,9 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editRemoveCheckBtn;
         private System.Windows.Forms.ToolStripMenuItem editRemoveUncheckBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem menuOpenBtn;
+        private System.Windows.Forms.ToolStripMenuItem menuOpenBkpFolderBtn;
     }
 }
 

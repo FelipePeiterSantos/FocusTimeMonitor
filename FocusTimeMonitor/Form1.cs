@@ -8,6 +8,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace FocusTimeMonitor
 {
@@ -58,6 +59,9 @@ namespace FocusTimeMonitor
         private string windowName;
         private string processName;
         private int lastWidthSize;
+        private string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+"/FocusTimeMonitor";
+        private bool backupRedundance;
+        private string backupFormat = "{0} // {1} // {2} // {3}";
         private uint lastInput;
 
         private NotifyIcon trayIcon;
@@ -80,6 +84,10 @@ namespace FocusTimeMonitor
             };
             trayIcon.MouseDoubleClick += trayIcon_DoubleClick;
             trayIcon.ContextMenuStrip = trayContextMenuStrip;
+
+            if(!Directory.Exists(documentsPath)){
+                Directory.CreateDirectory(documentsPath);
+            }
 
             totalTime.Text = string.Format(labelFormatTotalTime, TimeFormat(0));
             updateTimer = new Timer();
@@ -166,6 +174,10 @@ namespace FocusTimeMonitor
                 if(item.check) {
                     totalTimeCount += item.time;
                 }
+            }
+
+            if(DateTime.Now.Second % 60 == 0){
+                SaveBackup();
             }
 
             totalTime.Text = string.Format(labelFormatTotalTime,TimeFormat(totalTimeCount));
@@ -347,6 +359,45 @@ namespace FocusTimeMonitor
             }
         }
 
+        private void SaveBackup(){
+            string backupFile = "/backup_"+(backupRedundance ? 1:0)+".txt";
+            if (!File.Exists(documentsPath + backupFile)){
+                CreateBackupFile(documentsPath + backupFile);
+            }
+            else{
+                File.Delete(documentsPath + backupFile);
+                CreateBackupFile(documentsPath + backupFile);
+            }
+            backupRedundance = !backupRedundance;
+            Process.Start(documentsPath);
+        }
+
+        private void CreateBackupFile(string path){
+            using (StreamWriter sw = File.CreateText(path)) {
+                sw.WriteLine(string.Format(backupFormat,"#Actived","Window Name","Process Name","Focused Time"));
+                sw.WriteLine("\n");
+                int totalSec = 0;
+                int totalSecChecked = 0;
+                TimeSpan timeFormat = new TimeSpan();
+                foreach (ListInfo item in listHandle){
+                    timeFormat = TimeSpan.FromSeconds(item.time);
+                    sw.WriteLine(string.Format(backupFormat,item.check ? "Check":"Uncheck",item.name,item.process,timeFormat));
+                    if(item.check){
+                        totalSecChecked += item.time;
+                    }
+                    totalSec += item.time;
+                }
+                sw.WriteLine("\n");
+                timeFormat = TimeSpan.FromSeconds(totalSecChecked);
+                sw.WriteLine("Total Time Checked: "+timeFormat);
+                timeFormat = TimeSpan.FromSeconds(totalSec);
+                sw.WriteLine("Total Time: "+timeFormat);
+                sw.WriteLine("\n");
+                sw.WriteLine("Saved at "+DateTime.Now);
+                sw.Dispose();
+            }
+        }
+
         private void UpdateList() {
             listView.Items.Clear();
             foreach (ListInfo item in listHandle){
@@ -452,6 +503,8 @@ namespace FocusTimeMonitor
             }
         }
 
-        
+        private void menuOpenBkpFolderBtn_Click(object sender, EventArgs e){
+            Process.Start(documentsPath);
+        }
     }
 }

@@ -369,7 +369,6 @@ namespace FocusTimeMonitor
                 CreateBackupFile(documentsPath + backupFile);
             }
             backupRedundance = !backupRedundance;
-            Process.Start(documentsPath);
         }
 
         private void CreateBackupFile(string path){
